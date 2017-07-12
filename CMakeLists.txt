@@ -65,7 +65,8 @@ find_package(Git)
 
 # Global testing parameters
 enable_testing()
-set(PHAROS_TEST_OPS --no-site-file --no-user-file --library ${CMAKE_SOURCE_DIR})
+add_subdirectory(tests)
+set(PHAROS_TEST_OPS --no-site-file --no-user-file ${TESTCONFIG_SWITCH})
 set(CTEST_TEST_TIMEOUT 300)     # 5 minutes
 
 # Add pod building
@@ -80,5 +81,5 @@ add_subdirectory(apidb)
 add_subdirectory(typedb)
 
 install(DIRECTORY configs DESTINATION share/pharos)
-install(FILES README.txt COPYRIGHT.txt LICENSE.txt DESTINATION share/doc/pharos
+install(FILES README.md COPYRIGHT.md LICENSE.md DESTINATION share/doc/pharos
   PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
